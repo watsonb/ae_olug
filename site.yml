@@ -1,0 +1,31 @@
+---
+
+all:
+  vars:
+    hello_world_msg: "Global default message"
+    ansible_connection: local
+    ansible_python_interpreter: /usr/bin/python3
+  children:
+    db_servers:
+      vars:
+        hello_world_msg: "Database default message"
+      hosts:
+        db1:
+        db2:
+        db3:
+    app_servers:
+      hosts:
+        app1:
+        app2:
+        app3:
+          hello_world_msg: "App3 default message"
+    web_servers:
+      vars:
+        hello_world_msg: "Web default message"
+      hosts:
+        web1:
+        web2:
+        web3:
+    lb_servers:
+      hosts:
+        hap:
